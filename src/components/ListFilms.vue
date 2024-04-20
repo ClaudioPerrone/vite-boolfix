@@ -4,11 +4,13 @@
 
     export default {
 		name: "ListFilms",
+
         data() {
             return {
                 store
             }
         },
+        
         components: {
             CardFilm
         }

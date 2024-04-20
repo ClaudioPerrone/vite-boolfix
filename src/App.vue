@@ -1,3 +1,10 @@
+<!-- 
+    Esercizio di oggi: Boolflix
+
+    https://docs.google.com/document/d/1JBwSbzVo88GBKKUwNTx6fQe7RetT_uw_PTxtGgoQPWI/edit
+ -->
+
+
 <script>
     import { store } from './store.js';
     import axios from 'axios';
@@ -9,12 +16,6 @@
         components: {
             AppHeader,
             ListFilms
-        },
-
-        data() {
-            return {
-	            store
-	        };
         },
 
         methods: {
@@ -29,7 +30,7 @@
 	                params:queryParams
 	            }).
 	            then((response) => {
-                    console.log(store.movies);
+                    //console.log(store.movies);
 	                store.movies = response.data.results;
 	            });
 
