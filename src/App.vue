@@ -26,22 +26,43 @@
                     query: store.searchText
                 };
 
+                //Sezione per i film
                 axios.get('https://api.themoviedb.org/3/search/movie', {
-	                params:queryParams
-	            }).
-	            then((response) => {
-                    //console.log(store.movies);
-	                store.movies = response.data.results;
+	                params: queryParams
+	                }).
+	                then((response) => {
+                        //console.log(store.movies);
+	                    store.movies = response.data.results;
 	            });
-
             },
+
+            getSeriesFromApi() {
+                //console.log('chiamata api');
+                const queryParams = {
+                    api_key: store.apiKey,
+                    query: store.searchText
+                };
+
+                //Sezione per le serie
+                axios.get('https://api.themoviedb.org/3/search/tv', {
+	                params: queryParams
+	                }).
+	                then((response) => {
+                        //console.log(store.series);
+	                    store.series = response.data.results;
+	            });
+            },
+
+            getMovieAndSeries() {
+                this.getFilmFromApi();
+                this.getSeriesFromApi();
+            }
         }
     }
-
 </script>
 
 <template>
-    <AppHeader @searchPerformed="getFilmFromApi"></AppHeader>
+    <AppHeader @searchPerformed="getMovieAndSeries"></AppHeader>
 
     <main>
         <ListFilms></ListFilms>

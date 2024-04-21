@@ -38,10 +38,10 @@
 
 <template>
 	<ul>
-		<li><h3>Titolo: "{{ cardInfo.title }}"</h3></li>
-		<li><h2>Titolo originale: "{{ cardInfo.original_title }}"</h2></li>
+		<li><h3>Titolo: "{{ cardInfo.title }} {{ cardInfo.name }}"</h3></li>
+		<li><h2>Titolo originale: "{{ cardInfo.original_title }} {{ cardInfo.name }}"</h2></li>
 		<li>
-			<p>Lingua: <img :src="getFlagUrl()"> {{ cardInfo.original_language }}</p>
+			<p>Lingua: <img :src="getFlagUrl()"></p>
 		</li>
 		<li><p>Voto: {{ cardInfo.vote_average }}</p></li>
 	</ul>
