@@ -10,7 +10,7 @@
 
 		data() {
 			return {
-				supportedFlas: [
+				supportedFlags: [
 					'en',
 					'fr',
 					'it'
@@ -34,14 +34,16 @@
 			},
 			
 			getPosterUrl() {
-				let posterImage =  this.cardInfo.poster_path;
+				let posterImage = this.cardInfo.poster_path;
 
 				return new URL(`https://image.tmdb.org/t/p/w154/${posterImage}`).href;
-			}
+			},
+
+			convertiVoto() {
+				return Math.ceil(this.cardInfo.vote_average / 2);
+    		}
 		}
 	}
-
-
 </script>
 
 <template>
@@ -52,7 +54,11 @@
 		<li>
 			<p>Lingua: <img class="flag" :src="getFlagUrl()"></p>
 		</li>
-		<li><p>Voto: {{ cardInfo.vote_average }}</p></li>
+		<li><p>Voto:
+			{{ convertiVoto() }}
+			<i v-for="n in convertiVoto()" class="fa-solid fa-star"></i>
+			<i v-for="n in 5 - convertiVoto()" class="fa-regular fa-star"></i>
+		</p></li>
 	</ul>
 </template>
 
